@@ -34,7 +34,7 @@ Récupération des villes (autre tentative de récupération de données par poi
 http://localhost:8081/api/city
 
 # Partie Tutorials
-Intégration de tutoriaux trouvés sur la doc Neo4J dans les sous-packages Tutorials. 
+Intégration de tutoriaux trouvés sur la doc Neo4J dans les sous-packages Tutorials. https://neo4j.com/developer/spring-data-neo4j/ 
 Pour ajouter des données : dans l'interface Neo4J aller dans Favorites > Example Graphs > Movie Graph > Run
 
 URL fonctionnelle actuellement : 
