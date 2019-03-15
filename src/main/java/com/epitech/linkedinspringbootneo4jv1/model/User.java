@@ -18,6 +18,6 @@ public class User {
     private String lastname;
     private String name;
 
-    @Relationship(type = "IS_LOCATED_IN", direction = Relationship.INCOMING)
+    @Relationship(type = "LIVES_IN")
     private City city;
 }
