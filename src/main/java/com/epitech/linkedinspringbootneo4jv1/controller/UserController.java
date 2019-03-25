@@ -10,23 +10,41 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 
+/**
+ * Controller for User class
+ */
 @RestController
 @RequestMapping("/")
 public class UserController {
 
+    /** Bean of userService */
     @Autowired
     UserService userService;
 
-    @GetMapping("/users/{id}")
+    /**
+     * Get a user by id
+     * @param id : id searched
+     * @return : user found
+     */
+    @GetMapping("/users/id/{id}")
     public User findById(@PathVariable Long id) {
         return userService.findById(id);
     }
 
+    /**
+     * Get all users
+     * @return : all users
+     */
     @GetMapping("/users")
     public Collection<User> getAll() {
         return userService.getAll();
     }
 
+    /**
+     * Get users by city
+     * @param cityName : name of the city
+     * @return : users living in the city
+     */
     @GetMapping("/users/city/{cityName}")
     public Collection<User> getAllUsersByCity(@PathVariable String cityName) {
         return userService.getAllByCity(cityName);
