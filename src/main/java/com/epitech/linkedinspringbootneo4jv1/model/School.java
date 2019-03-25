@@ -6,31 +6,22 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.util.List;
-
 /**
- * User class
+ * Class for School
  */
 @Getter
 @Builder
 @NodeEntity
-public class User {
+public class School {
 
     /** id */
     @Id
     private Long id;
 
-    /** Lastname */
-    private String lastname;
-
-    /** Name */
+    /** name */
     private String name;
 
-    /** City where the user lives */
-    @Relationship(type = "LIVES_IN")
+    /** city of the school */
+    @Relationship(type = "IS_LOCATED_IN")
     private City city;
-
-    /** User's experiences */
-    @Relationship(type = "HAS_EXPERIENCES")
-    private List<Experience> experiences;
 }
