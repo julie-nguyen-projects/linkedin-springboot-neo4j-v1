@@ -4,6 +4,7 @@ import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import java.util.Collection;
 
@@ -20,5 +21,13 @@ public class UserService {
 
     public Collection<User> getAll() {
         return userRepository.getAllUsers();
+    }
+
+    public User addUser(User _user) {
+        if (_user.getId() != null) {
+            System.out.println("Error: can not create user with existing id.");
+            return null;
+        }
+        return userRepository.save(_user);
     }
 }
