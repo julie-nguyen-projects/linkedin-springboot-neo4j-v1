@@ -27,6 +27,22 @@ CREATE (Chambery)-[:IS_IN]->(France)
 CREATE (Lyon)-[:IS_IN]->(France)
 ```
 
+Création d'une école Epitech à Lyon
+```
+MATCH (lyon {name: "Lyon"})
+CREATE (EpitechLyon:School{name: 'EpitechLyon'})
+CREATE (EpitechLyon)-[:IS_LOCATED_IN]->(lyon)
+```
+
+Lien entre l'école et l'utilisateur
+```
+MATCH (lyon {name: "Lyon"}), (julie {name: "Julie"}), (epitech{name: 'Epitech'})
+CREATE (julExp01:Experience {beginningDate:'2017-09'})
+CREATE (julie)-[:HAS_EXPERIENCES]->(julExp01)
+CREATE (julExp01)-[:STUDY]->(epitech)
+```
+
+
 # Lancer l'application java
 L'interface et la première requête de récupérations des utilisateurs est disponible sous : 
 http://localhost:8081/api/user
