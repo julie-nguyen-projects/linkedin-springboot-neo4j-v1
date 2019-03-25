@@ -26,4 +26,9 @@ public class UserController {
     public Collection<User> getAll() {
         return userService.getAll();
     }
+
+    @GetMapping("/users/city/{cityName}")
+    public Collection<User> getAllUsersByCity(@PathVariable String cityName) {
+        return userService.getAllByCity(cityName);
+    }
 }

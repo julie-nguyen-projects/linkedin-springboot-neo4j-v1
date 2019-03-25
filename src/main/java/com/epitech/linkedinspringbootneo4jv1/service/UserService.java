@@ -21,4 +21,8 @@ public class UserService {
     public Collection<User> getAll() {
         return userRepository.getAllUsers();
     }
+
+    public Collection<User> getAllByCity(String cityName) {
+        return userRepository.getAllUsersByCity(cityName);
+    }
 }
