@@ -6,24 +6,33 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.util.Date;
-
+/**
+ * Class for Experience
+ */
 @Getter
 @Builder
 @NodeEntity
 public class Experience {
 
+    /** id */
     @Id
     private Long id;
-    private Date beginningDate;
-    private Date endingDate;
 
+    /** Beginning date */
+    private String beginningDate;
+
+    /** Ending date */
+    private String endingDate;
+
+    /** Work experience linked to a company */
     @Relationship(type = "WORK_COMPANY")
     private Company company;
 
-    @Relationship(type = "WORK_COMPANY")
+    /** Work experience linked to a school */
+    @Relationship(type = "WORK_SCHOOL")
     private School schoolToWork;
 
+    /** Study experience */
     @Relationship(type = "STUDY")
     private School schoolToStudy;
 }

@@ -1,10 +1,12 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
+import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
@@ -42,5 +44,18 @@ public class UserService {
      */
     public Collection<User> getAllByCity(String cityName) {
         return userRepository.getAllUsersByCity(cityName);
+    }
+
+    /**
+     * Get all experiences linked to a user
+     * @param id : id of the user
+     * @return : experiences of the user
+     */
+    public Collection<Experience> getAllUserExperiences(Long id) {
+        Collection<Experience> allExperiences = new ArrayList<>();
+        allExperiences.addAll(userRepository.getAllUserStudyExperiences(id));
+        allExperiences.addAll(userRepository.getAllUserWorkCompanyExperiences(id));
+        allExperiences.addAll(userRepository.getAllUserWorkSchoolExperiences(id));
+        return allExperiences;
     }
 }
