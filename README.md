@@ -36,7 +36,7 @@ CREATE (EpitechLyon)-[:IS_LOCATED_IN]->(lyon)
 
 Lien entre l'école et l'utilisateur
 ```
-MATCH (lyon {name: "Lyon"}), (julie {name: "Julie"}), (epitech{name: 'Epitech'})
+MATCH (lyon {name: "Lyon"}), (julie {name: "Julie"}), (epitech{name: 'EpitechLyon'})
 CREATE (julExp01:Experience {beginningDate:'2017-09'})
 CREATE (julie)-[:HAS_EXPERIENCES]->(julExp01)
 CREATE (julExp01)-[:STUDY]->(epitech)
