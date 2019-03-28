@@ -3,9 +3,7 @@ package com.epitech.linkedinspringbootneo4jv1.service;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,8 +27,7 @@ public class UserService {
      * @return : user found
      */
     public User findById(Long id) {
-        User result = this.userRepository.findById(id).orElseGet(null);
-        return result;
+        return this.userRepository.findById(id).orElseGet(null);
     }
 
     /**
