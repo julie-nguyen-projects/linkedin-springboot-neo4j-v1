@@ -64,11 +64,17 @@ public class UserService {
         return allExperiences;
     }
 
-    public User addUser(User _user) {
-        if (_user.getId() != null) {
+    /**
+     * Create a user
+     * @param user : user to create
+     * @return user created
+     */
+    public User addUser(User user) {
+        if (user.getId() != null) {
             System.out.println("Error: can not create user with existing id.");
+            // TODO : exception
             return null;
         }
-        return userRepository.save(_user);
+        return userRepository.save(user);
     }
 }

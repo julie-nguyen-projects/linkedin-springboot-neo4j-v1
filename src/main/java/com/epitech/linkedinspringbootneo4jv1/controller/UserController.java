@@ -54,12 +54,17 @@ public class UserController {
      * @return : experiences of the user
      */
     @GetMapping("/users/{id}/experiences")
-    public Collection<Experience> getUserExperieces(@PathVariable Long id) {
+    public Collection<Experience> getUserExperiences(@PathVariable Long id) {
         return userService.getAllUserExperiences(id);
     }
 
+    /**
+     * Create a user
+     * @param user : user to create
+     * @return user created
+     */
     @PostMapping("/users")
-    public User addUser(@RequestBody User _user) {
-        return userService.addUser(_user);
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 }

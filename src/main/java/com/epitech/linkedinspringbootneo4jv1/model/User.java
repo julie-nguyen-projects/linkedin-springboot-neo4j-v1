@@ -55,4 +55,12 @@ public class User {
         name = _name;
         city = _city;
     }
+
+    public User (Long _id, String _lastname, String _name, City _city, List<Experience> _experiences) {
+        id = _id;
+        lastname = _lastname;
+        name = _name;
+        city = _city;
+        experiences = _experiences;
+    }
 }
