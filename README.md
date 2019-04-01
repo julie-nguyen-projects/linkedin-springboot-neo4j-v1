@@ -42,6 +42,12 @@ CREATE (julie)-[:HAS_EXPERIENCES]->(julExp01)
 CREATE (julExp01)-[:STUDY]->(epitech)
 ```
 
+// Création entreprises
+```
+MATCH (lyon {name: "Lyon"})
+CREATE (EntrepriseUne:Company{name: 'EntrepriseUne'})
+CREATE (EntrepriseUne)-[:IS_LOCATED_IN]->(lyon)
+```
 
 # Lancer l'application java
 L'interface et la première requête de récupérations des utilisateurs est disponible sous : 
