@@ -4,10 +4,8 @@ import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -18,7 +16,6 @@ import java.util.Collection;
 @RequestMapping("/")
 public class UserController {
 
-    /** Bean of userService */
     @Autowired
     UserService userService;
 
@@ -57,7 +54,17 @@ public class UserController {
      * @return : experiences of the user
      */
     @GetMapping("/users/{id}/experiences")
-    public Collection<Experience> getUserExperieces(@PathVariable Long id) {
+    public Collection<Experience> getUserExperiences(@PathVariable Long id) {
         return userService.getAllUserExperiences(id);
+    }
+
+    /**
+     * Create a user
+     * @param user : user to create
+     * @return user created
+     */
+    @PostMapping("/users")
+    public User addUser(@RequestBody User user) {
+        return userService.addUser(user);
     }
 }

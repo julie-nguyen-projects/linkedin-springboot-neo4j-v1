@@ -59,4 +59,18 @@ public class UserService {
         allExperiences.addAll(userRepository.getAllUserWorkSchoolExperiences(id));
         return allExperiences;
     }
+
+    /**
+     * Create a user
+     * @param user : user to create
+     * @return user created
+     */
+    public User addUser(User user) {
+        if (user.getId() != null) {
+            System.out.println("Error: can not create user with existing id.");
+            // TODO : exception
+            return null;
+        }
+        return userRepository.save(user);
+    }
 }
