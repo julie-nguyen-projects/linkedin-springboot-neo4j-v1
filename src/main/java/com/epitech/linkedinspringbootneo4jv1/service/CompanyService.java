@@ -43,4 +43,13 @@ public class CompanyService {
     public Collection<Company> getAllByCity(String cityName) {
         return companyRepository.getAllCompaniesByCity(cityName);
     }
+
+    /**
+     * Get company by name
+     * @param companyName : name of the company
+     * @return : found company
+     */
+    public Company getByName(String companyName) {
+        return companyRepository.getByName(companyName);
+    }
 }

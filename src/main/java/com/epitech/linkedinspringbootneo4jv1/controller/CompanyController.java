@@ -52,4 +52,14 @@ public class CompanyController {
     public ResponseEntity<Collection<Company>> getAllCompaniesByCity(@PathVariable String cityName) {
         return ResponseEntity.ok().body(companyService.getAllByCity(cityName));
     }
+
+    /**
+     * Get company by name
+     * @param companyName : name of the company
+     * @return : ResponseEntity : status OK and found company in the body
+     */
+    @GetMapping("/companies/name/{companyName}")
+    public ResponseEntity<Company> getSchoolByName(@PathVariable String companyName) {
+        return ResponseEntity.ok().body(companyService.getByName(companyName));
+    }
 }
