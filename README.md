@@ -42,7 +42,7 @@ CREATE (julie)-[:HAS_EXPERIENCES]->(julExp01)
 CREATE (julExp01)-[:STUDY]->(epitech)
 ```
 
-// Création entreprises
+// Création d'une entreprise à Lyon
 ```
 MATCH (lyon {name: "Lyon"})
 CREATE (EntrepriseUne:Company{name: 'EntrepriseUne'})
