@@ -19,7 +19,29 @@ public class SchoolService {
         this.schoolRepository = schoolRepository;
     }
 
+    /**
+     * Get all Schools
+     * @return all schools
+     */
     public Collection<School> getAll() {
         return schoolRepository.getAllSchools();
+    }
+
+    /**
+     * Get school by id
+     * @param id : id of the searched school
+     * @return school found
+     */
+    public School getById(Long id) {
+        return schoolRepository.getById(id);
+    }
+
+    /**
+     * Get all schools by city
+     * @param cityName : name of the city
+     * @return : schools located in the city
+     */
+    public Collection<School> getAllByCity(String cityName) {
+        return schoolRepository.getAllByCity(cityName);
     }
 }

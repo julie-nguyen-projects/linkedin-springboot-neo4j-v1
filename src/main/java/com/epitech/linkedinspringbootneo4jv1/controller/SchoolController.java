@@ -6,6 +6,7 @@ import javafx.print.Collation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,9 +27,32 @@ public class SchoolController {
         this.schoolService = schoolService;
     }
 
-
+    /**
+     * Get all Schools
+     * @return ResponseEntity : status OK and list of Schools in the body
+     */
     @GetMapping("/schools")
     public ResponseEntity<Collection<School>> getAll() {
         return ResponseEntity.ok().body(schoolService.getAll());
+    }
+
+    /**
+     * Get school by id
+     * @param id : id of the searched school
+     * @return ResponseEntity : status OK and found school in the body
+     */
+    @GetMapping("/schools/id/{id}")
+    public ResponseEntity<School> getSchoolById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(schoolService.getById(id));
+    }
+
+    /**
+     * Get all schools by city
+     * @param cityName : name of the city
+     * @return : schools located in the city
+     */
+    @GetMapping("/schools/city/{cityName}")
+    public ResponseEntity<Collection<School>> getAllSchoolsByCity(@PathVariable String cityName) {
+        return ResponseEntity.ok().body(schoolService.getAllByCity(cityName));
     }
 }
