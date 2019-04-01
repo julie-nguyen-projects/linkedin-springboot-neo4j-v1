@@ -25,4 +25,22 @@ public class CompanyService {
     public Collection<Company> getAll() {
         return companyRepository.getAllCompanies();
     }
+
+    /**
+     * Get company by id
+     * @param id : id of the searched company
+     * @return company found
+     */
+    public Company getById(Long id) {
+        return companyRepository.getCompanyById(id);
+    }
+
+    /**
+     * Get all companies by city
+     * @param cityName : name of the city
+     * @return : companies located in the city
+     */
+    public Collection<Company> getAllByCity(String cityName) {
+        return companyRepository.getAllCompaniesByCity(cityName);
+    }
 }

@@ -14,4 +14,20 @@ public interface CompanyRepository extends Neo4jRepository<Company, Long> {
      */
     @Query("MATCH (cy:Company)-[ili:IS_LOCATED_IN]->(c:City)-[ii:IS_IN]->(co:Country) RETURN cy,ili,c,ii,co")
     Collection<Company> getAllCompanies();
+
+    /**
+     * Get company by id
+     * @param id : id of the searched company
+     * @return company found
+     */
+    @Query("MATCH (c:Company) WHERE ID(c)={id} RETURN c")
+    Company getCompanyById(Long id);
+
+    /**
+     * Get companies by city
+     * @param cityName : name of the city
+     * @return : companies living in the city
+     */
+    @Query("MATCH (co:Country)<-[ii:IS_IN]-(c:City)<-[li:IS_LOCATED_IN]-(u:User) WHERE c.name={cityName} RETURN u,c,li,co,ii")
+    Collection<Company> getAllCompaniesByCity(String cityName);
 }

@@ -4,6 +4,7 @@ import com.epitech.linkedinspringbootneo4jv1.model.Company;
 import com.epitech.linkedinspringbootneo4jv1.service.CompanyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,5 +31,25 @@ public class CompanyController {
     @GetMapping("/companies")
     public ResponseEntity<Collection<Company>> getAll() {
         return ResponseEntity.ok().body(companyService.getAll());
+    }
+
+    /**
+     * Get company by id
+     * @param id : id of the searched company
+     * @return company found
+     */
+    @GetMapping("/companies/id/{id}")
+    public ResponseEntity<Company> getCompanyById(@PathVariable Long id) {
+        return ResponseEntity.ok().body(companyService.getById(id));
+    }
+
+    /**
+     * Get all companies by city
+     * @param cityName : name of the city
+     * @return : companies located in the city
+     */
+    @GetMapping("/companies/city/{cityName}")
+    public ResponseEntity<Collection<Company>> getAllCompaniesByCity(@PathVariable String cityName) {
+        return ResponseEntity.ok().body(companyService.getAllByCity(cityName));
     }
 }
