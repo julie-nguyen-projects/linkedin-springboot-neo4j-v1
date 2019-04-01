@@ -44,4 +44,13 @@ public class SchoolService {
     public Collection<School> getAllByCity(String cityName) {
         return schoolRepository.getAllByCity(cityName);
     }
+
+    /**
+     * Get school by name
+     * @param schoolName : name of the school
+     * @return : found school
+     */
+    public School getSchoolByName(String schoolName) {
+        return schoolRepository.getSchoolByName(schoolName);
+    }
 }

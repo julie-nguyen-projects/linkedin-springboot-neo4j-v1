@@ -49,10 +49,20 @@ public class SchoolController {
     /**
      * Get all schools by city
      * @param cityName : name of the city
-     * @return : schools located in the city
+     * @return : ResponseEntity : status OK and schools located in the city in the body
      */
     @GetMapping("/schools/city/{cityName}")
     public ResponseEntity<Collection<School>> getAllSchoolsByCity(@PathVariable String cityName) {
         return ResponseEntity.ok().body(schoolService.getAllByCity(cityName));
+    }
+
+    /**
+     * Get school by name
+     * @param schoolName : name of the school
+     * @return : ResponseEntity : status OK and found school in the body
+     */
+    @GetMapping("/schools/name/{schoolName}")
+    public ResponseEntity<School> getSchoolByName(@PathVariable String schoolName) {
+        return ResponseEntity.ok().body(schoolService.getSchoolByName(schoolName));
     }
 }

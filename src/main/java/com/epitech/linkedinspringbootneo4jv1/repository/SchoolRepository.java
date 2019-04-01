@@ -30,4 +30,12 @@ public interface SchoolRepository extends Neo4jRepository<School, Long> {
      */
     @Query("MATCH (co:Country)<-[ii:IS_IN]-(c:City)<-[li:IS_LOCATED_IN]-(u:School) WHERE c.name={cityName} RETURN u,c,li,co,ii")
     Collection<School> getAllByCity(String cityName);
+
+    /**
+     * Get school by name
+     * @param schoolName : name of the school
+     * @return : found school
+     */
+    @Query("MATCH (co:Country)<-[ii:IS_IN]-(c:City)<-[li:IS_LOCATED_IN]-(sch:School) WHERE sch.name={schoolName} RETURN sch,c,li,co,ii")
+    School getSchoolByName(String schoolName);
 }
