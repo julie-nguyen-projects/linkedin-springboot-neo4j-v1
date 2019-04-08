@@ -1,6 +1,7 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
 import com.epitech.linkedinspringbootneo4jv1.model.Company;
+import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +56,15 @@ public class CompanyService {
     }
 
     public Company create(Company company) {
-        return companyRepository.createCompany(company, company.getCity().getName());
+        return companyRepository.createCompany(company.getName(), company.getCity().getName());
+    }
+
+    /**
+     * Get users by company
+     * @param companyName : name of the company
+     * @return : users who work in that company
+     */
+    public Collection<User> getUsersByCompanyName(String companyName) {
+        return companyRepository.getUsersByCompanyName(companyName);
     }
 }
