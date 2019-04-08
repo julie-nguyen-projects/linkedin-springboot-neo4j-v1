@@ -2,10 +2,10 @@ package com.epitech.linkedinspringbootneo4jv1.model;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import org.neo4j.ogm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * City class

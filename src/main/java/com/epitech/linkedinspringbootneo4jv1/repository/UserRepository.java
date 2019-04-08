@@ -1,6 +1,7 @@
 package com.epitech.linkedinspringbootneo4jv1.repository;
 
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import org.springframework.data.neo4j.annotation.Query;

@@ -1,7 +1,9 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.repository.CityRepository;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -71,6 +73,10 @@ public class UserService {
             // TODO : exception
             return null;
         }
-        return userRepository.save(user);
+        User newUser = this.userRepository.save(user);
+//        if (user.getCity() != null) {
+//            this.relationshipService.livesIn(user.getId(), user.getCity());
+//        }
+        return newUser;
     }
 }

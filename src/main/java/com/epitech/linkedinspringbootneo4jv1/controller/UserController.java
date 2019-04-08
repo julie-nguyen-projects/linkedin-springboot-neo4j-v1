@@ -1,7 +1,9 @@
 package com.epitech.linkedinspringbootneo4jv1.controller;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.service.CityService;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    private CityService cityService;
 
     /**
      * Get a user by id
@@ -63,6 +67,18 @@ public class UserController {
      * @param user : user to create
      * @return user created
      */
+/*   @PostMapping("/users")
+    public User addUser(@RequestBody User user) {
+        User newUser = userService.addUser(user);
+        if (this.cityService.cityExist(user.getCity().getName())) {
+
+        }else {
+            City newCity = this.cityService.save(user.getCity());
+            userService.livesIn(newUser.getId(), newCity);
+        }
+        return newUser;
+    }
+*/
     @PostMapping("/users")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
