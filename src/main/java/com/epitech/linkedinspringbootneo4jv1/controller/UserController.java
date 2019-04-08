@@ -67,18 +67,6 @@ public class UserController {
      * @param user : user to create
      * @return user created
      */
-/*   @PostMapping("/users")
-    public User addUser(@RequestBody User user) {
-        User newUser = userService.addUser(user);
-        if (this.cityService.cityExist(user.getCity().getName())) {
-
-        }else {
-            City newCity = this.cityService.save(user.getCity());
-            userService.livesIn(newUser.getId(), newCity);
-        }
-        return newUser;
-    }
-*/
     @PostMapping("/users")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
