@@ -71,6 +71,11 @@ public class CompanyController {
         return ResponseEntity.ok().body(companyService.getUsersByCompanyName(companyName));
     }
 
+    /**
+     * Create a company
+     * @param company : company to create
+     * @return : created company
+     */
     @PostMapping("/companies")
     public Company createCompany(@RequestBody Company company) {
         return companyService.create(company);

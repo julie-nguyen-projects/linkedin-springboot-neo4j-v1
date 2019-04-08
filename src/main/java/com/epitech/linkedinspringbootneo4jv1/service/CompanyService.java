@@ -55,6 +55,11 @@ public class CompanyService {
         return companyRepository.getByName(companyName);
     }
 
+    /**
+     * Create a company
+     * @param company : company to create
+     * @return : created company
+     */
     public Company create(Company company) {
         return companyRepository.createCompany(company.getName(), company.getCity().getName());
     }
