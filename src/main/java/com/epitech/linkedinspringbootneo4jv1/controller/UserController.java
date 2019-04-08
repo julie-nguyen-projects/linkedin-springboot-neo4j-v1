@@ -4,7 +4,6 @@ import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -16,8 +15,12 @@ import java.util.Collection;
 @RequestMapping("/")
 public class UserController {
 
+    private final UserService userService;
+
     @Autowired
-    UserService userService;
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
 
     /**
      * Get a user by id
