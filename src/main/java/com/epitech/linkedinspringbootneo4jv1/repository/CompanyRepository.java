@@ -12,7 +12,7 @@ public interface CompanyRepository extends Neo4jRepository<Company, Long> {
      * Get all companies
      * @return list of companies
      */
-    @Query("MATCH (cy:Company)-[ili:IS_LOCATED_IN]->(c:City)-[ii:IS_IN]->(co:Country) RETURN cy,ili,c,ii,co")
+    @Query("MATCH (c:Company) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
     Collection<Company> getAllCompanies();
 
     /**
@@ -20,7 +20,7 @@ public interface CompanyRepository extends Neo4jRepository<Company, Long> {
      * @param id : id of the searched company
      * @return company found
      */
-    @Query("MATCH (c:Company) WHERE ID(c)={id} RETURN c")
+    @Query("MATCH (c:Company) MATCH p=(c)-[r*0..2]-() WHERE ID(c)={id} RETURN c, nodes(p), rels(p)")
     Company getCompanyById(Long id);
 
     /**
@@ -36,6 +36,10 @@ public interface CompanyRepository extends Neo4jRepository<Company, Long> {
      * @param companyName : name of the company
      * @return : company found
      */
-    @Query("MATCH (co:Country)<-[ii:IS_IN]-(c:City)<-[li:IS_LOCATED_IN]-(comp:Company) WHERE comp.name={companyName} RETURN comp,c,li,co,ii")
+    @Query("MATCH (comp:Company) MATCH p=(comp)-[r*0..2]-() WHERE comp.name={companyName} RETURN comp, nodes(p), rels(p)")
     Company getByName(String companyName);
+
+    @Query("MATCH (c:City) WHERE c.name={cityName} CREATE (Company{name: 'Sully Group'})\n" +
+            "CREATE (Sully)-[:IS_LOCATED_IN]->(lyon)")
+    Company createCompany(Company company, String cityName);
 }

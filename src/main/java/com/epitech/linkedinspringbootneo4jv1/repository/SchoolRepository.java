@@ -12,7 +12,7 @@ public interface SchoolRepository extends Neo4jRepository<School, Long> {
      * Get all Schools
      * @return all schools
      */
-    @Query("MATCH (s:School)-[ili:IS_LOCATED_IN]->(c:City)-[ii:IS_IN]->(co:Country) RETURN s,ili,c,ii,co")
+    @Query("MATCH (s:School) MATCH p=(s)-[r*0..2]-() RETURN s, nodes(p), rels(p)")
     Collection<School> getAllSchools();
 
     /**

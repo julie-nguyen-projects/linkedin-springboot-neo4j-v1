@@ -3,10 +3,7 @@ package com.epitech.linkedinspringbootneo4jv1.controller;
 import com.epitech.linkedinspringbootneo4jv1.model.Company;
 import com.epitech.linkedinspringbootneo4jv1.service.CompanyService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
@@ -61,5 +58,10 @@ public class CompanyController {
     @GetMapping("/companies/name/{companyName}")
     public ResponseEntity<Company> getSchoolByName(@PathVariable String companyName) {
         return ResponseEntity.ok().body(companyService.getByName(companyName));
+    }
+
+    @PostMapping("/companies")
+    public Company createCompany(@RequestBody Company company) {
+        return companyService.create(company);
     }
 }
