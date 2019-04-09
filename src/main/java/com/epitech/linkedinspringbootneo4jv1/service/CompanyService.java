@@ -61,6 +61,7 @@ public class CompanyService {
      * @return : created company
      */
     public Company create(Company company) {
+        // TODO check if city exists
         return companyRepository.createCompany(company.getName(), company.getCity().getName());
     }
 }
