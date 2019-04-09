@@ -16,7 +16,7 @@ import java.util.Collection;
 @RequestMapping("/")
 public class PostController {
 
-    /** Service for Company class */
+    /** Service for Post class */
     private final PostService postService;
 
     @Autowired
