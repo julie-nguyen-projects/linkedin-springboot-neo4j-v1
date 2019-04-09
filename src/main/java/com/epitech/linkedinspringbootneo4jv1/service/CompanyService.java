@@ -63,13 +63,4 @@ public class CompanyService {
     public Company create(Company company) {
         return companyRepository.createCompany(company.getName(), company.getCity().getName());
     }
-
-    /**
-     * Get users by company
-     * @param companyName : name of the company
-     * @return : users who work in that company
-     */
-    public Collection<User> getUsersByCompanyName(String companyName) {
-        return companyRepository.getUsersByCompanyName(companyName);
-    }
 }

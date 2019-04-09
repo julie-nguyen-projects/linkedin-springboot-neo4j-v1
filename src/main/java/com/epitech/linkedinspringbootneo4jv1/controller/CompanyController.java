@@ -1,7 +1,6 @@
 package com.epitech.linkedinspringbootneo4jv1.controller;
 
 import com.epitech.linkedinspringbootneo4jv1.model.Company;
-import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.service.CompanyService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -61,15 +60,6 @@ public class CompanyController {
         return ResponseEntity.ok().body(companyService.getByName(companyName));
     }
 
-    /**
-     * Get users by company
-     * @param companyName : name of the company
-     * @return : ResponseEntity : status OK and users who work in that company in the body
-     */
-    @GetMapping("/companies/users/{companyName}")
-    public ResponseEntity<Collection<User>> getUsersByCompany(@PathVariable String companyName) {
-        return ResponseEntity.ok().body(companyService.getUsersByCompanyName(companyName));
-    }
 
     /**
      * Create a company
