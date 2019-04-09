@@ -21,8 +21,6 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    private CityService cityService;
-
     /**
      * Get a user by id
      * @param id : id searched

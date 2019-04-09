@@ -2,6 +2,7 @@ package com.epitech.linkedinspringbootneo4jv1.model;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.*;
 
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.List;
  * City class
  */
 @Getter
+@Setter
 @Builder
 @NodeEntity
 public class City {
