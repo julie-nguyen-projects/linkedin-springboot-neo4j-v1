@@ -3,11 +3,13 @@ package com.epitech.linkedinspringbootneo4jv1.model;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 
 @Getter
+@Setter
 @Builder
 @NoArgsConstructor
 @NodeEntity
@@ -24,9 +26,5 @@ public class Country {
     public Country (Long _id, String _name) {
         id = _id;
         name = _name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 }
