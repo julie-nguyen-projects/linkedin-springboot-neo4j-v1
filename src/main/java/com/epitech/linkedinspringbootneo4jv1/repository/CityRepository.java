@@ -10,6 +10,15 @@ import java.util.Optional;
 
 @RepositoryRestResource(collectionResourceRel = "city", path = "city")
 public interface CityRepository extends Neo4jRepository<City, Long>{
+
+    /**
+     * Get a city by Id
+     * @param id : id searched
+     * @return : city found
+     */
+    @Query("MATCH (c:City) WHERE ID(c)={id} RETURN c")
+    Optional<City> findById(@Param("id") Long id);
+
     /**
      * Get a city by Name
      * @param name : name searched
@@ -19,7 +28,7 @@ public interface CityRepository extends Neo4jRepository<City, Long>{
     Optional<City> findByName(@Param("name") String name);
 
     /**
-     * Get all users even those without relationships
+     * Get all cities even those without relationships
      * @return : all cities
      */
     @Query("MATCH (ci:City) OPTIONAL MATCH (ci:City)-[ii:IS_IN]->(co:Country) RETURN ci,ii,co")
