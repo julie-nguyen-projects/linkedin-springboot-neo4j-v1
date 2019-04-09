@@ -7,39 +7,14 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import java.util.Collection;
 
-public interface PostRepository extends Neo4jRepository<Post, Long> {
+public interface CommentRepository extends Neo4jRepository<Post, Long> {
 
     /**
      * Get all post
      * @return list of companies
      */
-    @Query("MATCH (c:Post) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
-    Collection<Post> getAllPost();
-
-    /**
-     * Get post by id
-     * @param id : id of the searched post
-     * @return post found
-     */
-    @Query("MATCH p=(c:Post)-[r*0..2]-() WHERE ID(c)={id} RETURN c, nodes(p), rels(p)")
-    Post getPostById(Long id);
-
-
-    /**
-     * Get post by id
-     * @param id : id of the searched post
-     * @return comments found
-     */
-    @Query("MATCH (e:Comment)<-[he:HAS_COMMENTS]-(u:Post) " +
-            "WHERE ID(u)={id} " +
-            "RETURN e,he,u")
-    Collection<Comment>   getPostComments(Long id);
-
-
-    @Query("MATCH (city {name: {cityName}})" +
-            "CREATE (post:Post {content: {content}}) " +
-           " RETURN post")
-    Post createPost(String content);
+    @Query("MATCH (c:Comment) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
+    Collection<Comment> getAllComment();
 
     /**
      * Create a Comment

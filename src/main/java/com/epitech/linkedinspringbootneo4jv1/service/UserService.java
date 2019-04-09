@@ -2,6 +2,7 @@ package com.epitech.linkedinspringbootneo4jv1.service;
 
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,16 @@ public class UserService {
      */
     public Collection<User> getAllByCity(String cityName) {
         return userRepository.getAllUsersByCity(cityName);
+    }
+
+
+    /**
+     * Get post by user
+     * @param UserId : if of the user
+     * @return : Post from user
+     */
+    public Collection<Post> getAllUserPost(long UserId) {
+        return userRepository.getAllUserPost(UserId);
     }
 
     /**

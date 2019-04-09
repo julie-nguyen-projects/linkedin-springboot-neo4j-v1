@@ -1,45 +1,51 @@
 package com.epitech.linkedinspringbootneo4jv1.repository;
 
-import com.epitech.linkedinspringbootneo4jv1.model.Company;
+import com.epitech.linkedinspringbootneo4jv1.model.Comment;
+import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 
 import java.util.Collection;
 
-public interface CompanyRepository extends Neo4jRepository<Company, Long> {
+public interface PostRepository extends Neo4jRepository<Post, Long> {
 
     /**
-     * Get all companies
+     * Get all post
      * @return list of companies
      */
-    @Query("MATCH (c:Company) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
-    Collection<Company> getAllCompanies();
+    @Query("MATCH (c:Post) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
+    Collection<Post> getAllPost();
 
     /**
-     * Get company by id
-     * @param id : id of the searched company
-     * @return company found
+     * Get post by id
+     * @param id : id of the searched post
+     * @return post found
      */
-    @Query("MATCH (c:Company) MATCH p=(c)-[r*0..2]-() WHERE ID(c)={id} RETURN c, nodes(p), rels(p)")
-    Company getCompanyById(Long id);
+    @Query("MATCH p=(c:Post)-[r*0..2]-() WHERE ID(c)={id} RETURN c, nodes(p), rels(p)")
+    Post getPostById(Long id);
+
 
     /**
-     * Get companies by city
-     * @param cityName : name of the city
-     * @return : companies located in in the city
+     * Get post by id
+     * @param id : id of the searched post
+     * @return comments found
      */
-    @Query("MATCH (co:Country)<-[ii:IS_IN]-(c:City)<-[li:IS_LOCATED_IN]-(u:Company) WHERE c.name={cityName} RETURN u,c,li,co,ii")
-    Collection<Company> getAllCompaniesByCity(String cityName);
+    @Query("MATCH (e:Comment)<-[he:HAS_COMMENTS]-(u:Post) " +
+            "WHERE ID(u)={id} " +
+            "RETURN e,he,u")
+    Collection<Comment> getPostComments(Long id);
+
+
+    @Query("MATCH (city {name: {cityName}})" +
+            "CREATE (post:Post {content: {content}}) " +
+           " RETURN post")
+    Post createPost(String content);
 
     /**
-     * Get company by city
-     * @param companyName : name of the company
-     * @return : company found
+     * Create a Comment
+     * @param content : Content of Comment
+     * @return : created Comment
      */
-    @Query("MATCH (comp:Company) MATCH p=(comp)-[r*0..2]-() WHERE comp.name={companyName} RETURN comp, nodes(p), rels(p)")
-    Company getByName(String companyName);
-
-    @Query("MATCH (c:City) WHERE c.name={cityName} CREATE (Company{name: 'Sully Group'})\n" +
-            "CREATE (Sully)-[:IS_LOCATED_IN]->(lyon)")
-    Company createCompany(Company company, String cityName);
+    @Query("CREATE (comment:Comment {content: {content}})")
+    Comment createComment(String content);
 }

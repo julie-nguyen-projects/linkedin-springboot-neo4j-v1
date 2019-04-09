@@ -2,6 +2,7 @@ package com.epitech.linkedinspringbootneo4jv1.repository;
 
 
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
+import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
@@ -21,6 +22,18 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
      */
     @Query("MATCH (u:User) WHERE ID(u)={id} RETURN u")
     Optional<User> findById(@Param("id") Long id);
+
+    /**
+     * Get all study experiences linked to a user
+     * @param id : id of the user
+     * @return : experiences of the user
+     */
+
+    @Query("MATCH (e:Post)<-[he:HAS_POSTS]-(u:User) " +
+            "WHERE ID(u)={id} " +
+            "RETURN e,he,u")
+    Collection<Post> getAllUserPost(@Param("id")Long id);
+
 
     /**
      * Get all users even those without relationships

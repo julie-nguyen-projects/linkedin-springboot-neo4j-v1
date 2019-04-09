@@ -2,6 +2,7 @@ package com.epitech.linkedinspringbootneo4jv1.controller;
 
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -50,6 +51,18 @@ public class UserController {
     public Collection<User> getAllUsersByCity(@PathVariable String cityName) {
         return userService.getAllByCity(cityName);
     }
+
+
+    /**
+     * Get posts by userid
+     * @param userId : userid
+     * @return : users post
+     */
+    @GetMapping("/users/city/{userId}")
+    public Collection<Post> getAllUserPost(@PathVariable Long userId) {
+        return userService.getAllUserPost(userId);
+    }
+
 
     /**
      * Get all experiences linked to a user
