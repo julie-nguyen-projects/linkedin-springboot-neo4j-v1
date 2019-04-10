@@ -28,18 +28,36 @@ public class City {
     @Relationship(type = "IS_IN")
     private Country country;
 
+    /**
+     * CONSTRUCTOR
+     */
     public City () {
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _name
+     */
     public City (String _name) {
         name = _name;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _name
+     * @param _country
+     */
     public City (String _name, Country _country) {
         name = _name;
         country = _country;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _id
+     * @param _name
+     * @param _country
+     */
     public City (Long _id, String _name, Country _country) {
         id = _id;
         name = _name;

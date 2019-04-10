@@ -19,6 +19,10 @@ public class UserService {
     /** Repository for User class */
     private UserRepository userRepository;
 
+    /**
+     * CONSTRUCTOR
+     * @param userRepository
+     */
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -26,7 +30,7 @@ public class UserService {
     /**
      * Get a user by id
      * @param id : id searched
-     * @return : user found
+     * @return : user found or null
      */
     public User findById(Long id) {
         return this.userRepository.findById(id).orElseGet(null);

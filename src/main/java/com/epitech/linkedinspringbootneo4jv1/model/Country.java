@@ -13,16 +13,32 @@ import org.neo4j.ogm.annotation.NodeEntity;
 @Builder
 @NoArgsConstructor
 @NodeEntity
+
+/**
+ * Class Country
+ */
 public class Country {
 
+    /**Id */
     @Id @GeneratedValue
     private Long id;
+
+    /** The name of the country */
     private String name;
 
+    /**
+     * CONSTRUCTOR
+     * @param _name
+     */
     public Country (String _name) {
         name = _name;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _id
+     * @param _name
+     */
     public Country (Long _id, String _name) {
         id = _id;
         name = _name;
