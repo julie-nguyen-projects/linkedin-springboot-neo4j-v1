@@ -53,7 +53,7 @@ CREATE (EntrepriseUne)-[:IS_LOCATED_IN]->(lyon)
 ```
 MATCH (user {name: "Julie"})
 CREATE (Post:Post{content: 'post de julie'})
-CREATE (Post)-[:HAS_POSTS]->(user)
+CREATE (user)-[:HAS_POSTS]->(Post)
 ```
 
 // Lien entre un commentaire et un post
