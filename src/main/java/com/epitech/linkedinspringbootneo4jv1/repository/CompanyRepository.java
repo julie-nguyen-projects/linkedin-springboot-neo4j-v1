@@ -39,7 +39,14 @@ public interface CompanyRepository extends Neo4jRepository<Company, Long> {
     @Query("MATCH (comp:Company) MATCH p=(comp)-[r*0..2]-() WHERE comp.name={companyName} RETURN comp, nodes(p), rels(p)")
     Company getByName(String companyName);
 
-    @Query("MATCH (c:City) WHERE c.name={cityName} CREATE (Company{name: 'Sully Group'})\n" +
-            "CREATE (Sully)-[:IS_LOCATED_IN]->(lyon)")
-    Company createCompany(Company company, String cityName);
+    /**
+     * Create a company
+     * @param companyName : Name of the company
+     * @param cityName : city of the company
+     * @return : created company
+     */
+    @Query("MATCH (city {name: {cityName}})" +
+            "CREATE (company:Company {name: {companyName}}) " +
+            "CREATE (company)-[:IS_LOCATED_IN]->(city) RETURN company")
+    Company createCompany(String companyName, String cityName);
 }

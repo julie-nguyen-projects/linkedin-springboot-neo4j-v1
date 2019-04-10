@@ -2,7 +2,6 @@ package com.epitech.linkedinspringbootneo4jv1.controller;
 
 import com.epitech.linkedinspringbootneo4jv1.model.School;
 import com.epitech.linkedinspringbootneo4jv1.service.SchoolService;
-import javafx.print.Collation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

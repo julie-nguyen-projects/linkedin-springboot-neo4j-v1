@@ -61,6 +61,36 @@ public class UserService {
     }
 
     /**
+     * Get students by school
+     * @param schoolName : name of the school
+     * @return : students who study in that school
+     */
+    public Collection<User> getStudentsBySchoolName(String schoolName) {
+        // TODO check if school exists
+        return userRepository.getStudentsBySchoolName(schoolName);
+    }
+
+    /**
+     * Get users by company
+     * @param companyName : name of the company
+     * @return : users who work in that company
+     */
+    public Collection<User> getUsersByCompanyName(String companyName) {
+        // TODO check if company exists
+        return userRepository.getUsersByCompanyName(companyName);
+    }
+
+    /**
+     * Get employees by school
+     * @param schoolName : name of the school
+     * @return : users who work in that school
+     */
+    public Collection<User> getEmployeesBySchoolName(String schoolName) {
+        // TODO check if school exists
+        return userRepository.getEmployeesBySchoolName(schoolName);
+    }
+
+    /**
      * Create a user
      * @param user : user to create
      * @return user created
