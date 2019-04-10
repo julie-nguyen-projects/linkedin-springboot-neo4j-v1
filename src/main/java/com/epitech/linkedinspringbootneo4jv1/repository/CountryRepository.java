@@ -35,9 +35,15 @@ public interface CountryRepository  extends Neo4jRepository<Country, Long> {
     Collection<Country> getAllCountries();
 
     /**
-     * Create a new country
-     * @param country: country to create
-     * @return country created
+     * Create/Update a country
+     * @param country: country to create/update
+     * @return country created/updated
      */
     Country save(Country country);
+
+    /**
+     * Delete a country using his id
+     * @param id
+     */
+    void deleteById(Long id);
 }

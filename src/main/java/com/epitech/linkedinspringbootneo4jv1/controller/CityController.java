@@ -38,6 +38,9 @@ public class CityController {
 
     @PutMapping("/cities/id/{id}")
     public City updateCity (@PathVariable Long id, @RequestBody City city) {
-        return cityService.updateCity(id, city);
+        return this.cityService.updateCity(id, city);
     }
+
+    @DeleteMapping("/cities/id/{id}")
+    public void deleteCity(@PathVariable("id") Long id) { this.cityService.deleteCity(id); }
 }

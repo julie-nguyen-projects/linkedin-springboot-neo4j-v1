@@ -48,4 +48,11 @@ public interface CityRepository extends Neo4jRepository<City, Long>{
      * @return city created
      */
     City save(City city);
+
+    /**
+     * Delete a city
+     * @param id the id of the city
+     */
+    @Query("MATCH (c:City)-[ii:IS_IN]->() WHERE ID(c)={id} DELETE c, ii")
+    void delete(@Param("id") Long id);
 }

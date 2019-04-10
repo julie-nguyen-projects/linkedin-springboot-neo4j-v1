@@ -46,4 +46,8 @@ public class CityService {
         }
         return this.cityRepository.save(city);
     }
+
+    public void deleteCity(Long id) {
+        this.cityRepository.delete(id);
+    }
 }

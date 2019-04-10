@@ -44,7 +44,11 @@ public class CountryService {
             existingCountry.setName(country.getName());
             this.countryRepository.save(existingCountry);
         }
-        return this.countryRepository.save(country);
+        return this.countryRepository.save(existingCountry);
+    }
+
+    public void deleteCountry(Long id) {
+        this.countryRepository.deleteById(id);
     }
 
 }

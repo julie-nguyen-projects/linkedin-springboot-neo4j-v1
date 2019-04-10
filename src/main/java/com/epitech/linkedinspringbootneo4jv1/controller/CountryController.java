@@ -28,4 +28,7 @@ public class CountryController {
 
     @PutMapping("/countries/id/{id}")
     public Country updateCountry(@PathVariable("id") Long id, @RequestBody Country country) { return this.countryService.updateCountry(id, country); }
+
+    @DeleteMapping("/countries/id/{id}")
+    public void deleteCountry(@PathVariable("id") Long id) { this.countryService.deleteCountry(id); }
 }
