@@ -53,4 +53,13 @@ public class SchoolService {
     public School getSchoolByName(String schoolName) {
         return schoolRepository.getSchoolByName(schoolName);
     }
+
+    public boolean schoolExists(String schoolName) {
+        Collection<School> allSchools = this.getAll();
+        School schoolFound = allSchools.stream()
+                .filter(school -> school.getName().equalsIgnoreCase(schoolName))
+                .findAny()
+                .orElse(null);
+        return schoolFound != null;
+    }
 }

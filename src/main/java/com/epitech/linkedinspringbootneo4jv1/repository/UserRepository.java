@@ -71,10 +71,38 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
             "RETURN e,he,u,s,wc,co,ii,c,ili")
     Collection<Experience> getAllUserWorkCompanyExperiences(@Param("id") Long id);
 
+
+    /**
+     * Get students by school
+     * @param schoolName : name of the school
+     * @return : students who study in that school
+     */
+    @Query("MATCH (u:User)-[he:HAS_EXPERIENCES]->(e:Experience)-[wc:STUDY]->(c:School) " +
+            "WHERE c.name={schoolName} RETURN u")
+    Collection<User> getStudentsBySchoolName(String schoolName);
+
+    /**
+     * Get users by company
+     * @param companyName : name of the company
+     * @return : users who work in that company
+     */
+    @Query("MATCH (u:User)-[he:HAS_EXPERIENCES]->(e:Experience)-[wc:WORK_COMPANY]->(c:Company) " +
+            "WHERE c.name={companyName} RETURN u")
+    Collection<User> getUsersByCompanyName(String companyName);
+
     /**
      * Create a new user
      * @param user : user to create
      * @return user created
      */
     User save(User user);
+
+    /**
+     * Get employees by school
+     * @param schoolName : name of the school
+     * @return : users who work in that school
+     */
+    @Query("MATCH (u:User)-[he:HAS_EXPERIENCES]->(e:Experience)-[wc:WORK_SCHOOL]->(c:School) " +
+            "WHERE c.name={schoolName} RETURN u")
+    Collection<User> getEmployeesBySchoolName(String schoolName);
 }
