@@ -27,7 +27,7 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
      * Get all users even those without relationships
      * @return : all users
      */
-    @Query("MATCH (u:User) OPTIONAL MATCH (u:User)-[li:LIVES_IN]->(ci:City)-[ii:IS_IN]->(co:Country) RETURN u,li,ci,ii,co")
+    @Query("MATCH (u:User) OPTIONAL MATCH p=(u)-[r*0..2]-() RETURN u, nodes(p), rels(p)")
     Collection<User> getAllUsers();
 
     /**
