@@ -24,16 +24,6 @@ public class PostController {
         this.postService = postService;
     }
 
-//    /**
-//     * Get all companies
-//     * @return ResponseEntity : status OK and list of companies in the body
-//     */
-//    @GetMapping("/companies")
-//    public ResponseEntity<Collection<Post>> getAll() {
-//        return ResponseEntity.ok().body(postService.getAll());
-//    }
-//
-
     /**
      * Get all comment linked to a post
      * @param id : id of the user
@@ -53,6 +43,7 @@ public class PostController {
     public ResponseEntity<Post> getPostById(@PathVariable Long id) {
         return ResponseEntity.ok().body(postService.getById(id));
     }
+
 
     @PostMapping("/posts")
     public Post createPost(@RequestBody String content) {

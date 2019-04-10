@@ -21,7 +21,7 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
      * @param id : id of the searched post
      * @return post found
      */
-    @Query("MATCH p=(c:Post)-[r*0..2]-() WHERE ID(c)={id} RETURN c, nodes(p), rels(p)")
+    @Query("MATCH (s:Post) WHERE ID(s)={id} RETURN s")
     Post getPostById(Long id);
 
 

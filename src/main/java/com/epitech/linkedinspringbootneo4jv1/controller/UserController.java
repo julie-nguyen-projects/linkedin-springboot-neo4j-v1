@@ -58,7 +58,7 @@ public class UserController {
      * @param userId : userid
      * @return : users post
      */
-    @GetMapping("/users/city/{userId}")
+    @GetMapping("/users/{userId}/posts")
     public Collection<Post> getAllUserPost(@PathVariable Long userId) {
         return userService.getAllUserPost(userId);
     }

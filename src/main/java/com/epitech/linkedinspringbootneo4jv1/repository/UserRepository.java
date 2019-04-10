@@ -29,6 +29,11 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
      * @return : experiences of the user
      */
 
+//    @Query("MATCH (e:Post)<-[he:HAS_POSTS]-(u:User) " +
+//            "WHERE ID(u)={id} " +
+//            "RETURN e,he,u")
+//
+
     @Query("MATCH (e:Post)<-[he:HAS_POSTS]-(u:User) " +
             "WHERE ID(u)={id} " +
             "RETURN e,he,u")

@@ -13,8 +13,9 @@ public interface CommentRepository extends Neo4jRepository<Post, Long> {
      * Get all post
      * @return list of companies
      */
-    @Query("MATCH (c:Comment) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
-    Collection<Comment> getAllComment();
+    //@Query("MATCH (c:Comment) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
+    @Query("MATCH (s:Comment) WHERE ID(s)={id} RETURN s")
+    Comment getCommentByID(Long id);
 
     /**
      * Create a Comment

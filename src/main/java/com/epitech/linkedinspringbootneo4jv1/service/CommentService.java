@@ -23,8 +23,8 @@ public class CommentService {
      * Get all Post
      * @return list of companies
      */
-    public Collection<Comment> getAll() {
-        return commentRepository.getAllComment();
+    public Comment getById(Long id) {
+        return commentRepository.getCommentByID(id);
     }
 
 
