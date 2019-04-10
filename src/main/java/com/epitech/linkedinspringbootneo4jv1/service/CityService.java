@@ -24,6 +24,7 @@ public class CityService {
      * @return The city found or null
      */
     public City getById(Long id) { return this.cityRepository.findById(id).orElse(null); }
+    // TODO : exception
 
     /**
      * Get a city by name
@@ -31,6 +32,7 @@ public class CityService {
      * @return The city found or null
      */
     public City getByName(String name) { return this.cityRepository.findByName(name).orElse(null); }
+    // TODO : exception
 
     /**
      * Get all cities
@@ -68,6 +70,8 @@ public class CityService {
         if(!this.cityExist(city.getName())){
             return this.cityRepository.save(city);
         }
+        System.out.println("Error: can not create city with existing name.");
+        // TODO : exception
         return null;
     }
 

@@ -28,6 +28,7 @@ public class CountryService {
      * @return The country found
      */
     public Country getById(Long id) { return this.countryRepository.findById(id).orElse(null); }
+    // TODO : exception
 
     /**
      * Get a country by name
@@ -35,6 +36,7 @@ public class CountryService {
      * @return The country found
      */
     public Country getByName(String name) { return this.countryRepository.findByName(name).orElse(null); }
+    // TODO : exception
 
     /**
      * Get all countries
@@ -65,6 +67,8 @@ public class CountryService {
         if (!this.countryExists(country.getName())){
             return this.countryRepository.save(country);
         }
+        System.out.println("Error: can not create country with existing name.");
+        // TODO : exception
         return null;
     }
 

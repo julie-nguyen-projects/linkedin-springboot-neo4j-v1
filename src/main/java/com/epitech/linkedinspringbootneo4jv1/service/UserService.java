@@ -108,9 +108,6 @@ public class UserService {
             return null;
         }
         User newUser = this.userRepository.save(user);
-//        if (user.getCity() != null) {
-//            this.relationshipService.livesIn(user.getId(), user.getCity());
-//        }
         return newUser;
     }
 }
