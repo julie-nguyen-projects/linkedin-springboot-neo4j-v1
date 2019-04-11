@@ -27,16 +27,20 @@ public class CountryService {
      * @param id The id of the country
      * @return The country found
      */
-    public Country getById(Long id) { return this.countryRepository.findById(id).orElse(null); }
-    // TODO : exception
+    public Country getById(Long id) {
+        // TODO : exception
+        return this.countryRepository.findById(id).orElse(null);
+    }
 
     /**
      * Get a country by name
      * @param name the name of the country
      * @return The country found
      */
-    public Country getByName(String name) { return this.countryRepository.findByName(name).orElse(null); }
-    // TODO : exception
+    public Country getByName(String name) {
+        // TODO : exception
+        return this.countryRepository.findByName(name).orElse(null);
+    }
 
     /**
      * Get all countries

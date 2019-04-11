@@ -23,16 +23,20 @@ public class CityService {
      * @param id The id of the city searched
      * @return The city found or null
      */
-    public City getById(Long id) { return this.cityRepository.findById(id).orElse(null); }
-    // TODO : exception
+    public City getById(Long id) {
+        // TODO : exception
+        return this.cityRepository.findById(id).orElse(null);
+    }
 
     /**
      * Get a city by name
      * @param name The name of the search city
      * @return The city found or null
      */
-    public City getByName(String name) { return this.cityRepository.findByName(name).orElse(null); }
-    // TODO : exception
+    public City getByName(String name) {
+        // TODO : exception
+        return this.cityRepository.findByName(name).orElse(null);
+    }
 
     /**
      * Get all cities
