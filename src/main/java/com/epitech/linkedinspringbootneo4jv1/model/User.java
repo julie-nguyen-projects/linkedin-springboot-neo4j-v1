@@ -35,20 +35,41 @@ public class User {
     @Relationship(type = "HAS_EXPERIENCES")
     private List<Experience> experiences;
 
+    /**
+     * CONSTRUCTOR
+     */
     public User () {
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _lastname
+     * @param _name
+     */
     public User (String _lastname, String _name) {
         lastname  =_lastname;
         name = _name;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _lastname
+     * @param _name
+     * @param _city
+     */
     public User (String _lastname, String _name, City _city) {
         lastname = _lastname;
         name = _name;
         city = _city;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _id
+     * @param _lastname
+     * @param _name
+     * @param _city
+     */
     public User (Long _id, String _lastname, String _name, City _city) {
         id = _id;
         lastname = _lastname;
@@ -56,6 +77,14 @@ public class User {
         city = _city;
     }
 
+    /**
+     * Constructor
+     * @param _id
+     * @param _lastname
+     * @param _name
+     * @param _city
+     * @param _experiences
+     */
     public User (Long _id, String _lastname, String _name, City _city, List<Experience> _experiences) {
         id = _id;
         lastname = _lastname;

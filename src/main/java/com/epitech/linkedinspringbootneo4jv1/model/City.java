@@ -2,15 +2,17 @@ package com.epitech.linkedinspringbootneo4jv1.model;
 
 import lombok.Builder;
 import lombok.Getter;
-import org.neo4j.ogm.annotation.GeneratedValue;
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Relationship;
+import lombok.Setter;
+import org.neo4j.ogm.annotation.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * City class
  */
 @Getter
+@Setter
 @Builder
 @NodeEntity
 public class City {
@@ -26,18 +28,36 @@ public class City {
     @Relationship(type = "IS_IN")
     private Country country;
 
+    /**
+     * CONSTRUCTOR
+     */
     public City () {
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _name
+     */
     public City (String _name) {
         name = _name;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _name
+     * @param _country
+     */
     public City (String _name, Country _country) {
         name = _name;
         country = _country;
     }
 
+    /**
+     * CONSTRUCTOR
+     * @param _id
+     * @param _name
+     * @param _country
+     */
     public City (Long _id, String _name, Country _country) {
         id = _id;
         name = _name;

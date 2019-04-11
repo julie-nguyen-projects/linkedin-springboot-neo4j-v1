@@ -1,7 +1,9 @@
 package com.epitech.linkedinspringbootneo4jv1.controller;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.service.CityService;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

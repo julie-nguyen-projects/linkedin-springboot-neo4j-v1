@@ -1,7 +1,9 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
+import com.epitech.linkedinspringbootneo4jv1.repository.CityRepository;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +19,10 @@ public class UserService {
     /** Repository for User class */
     private UserRepository userRepository;
 
+    /**
+     * CONSTRUCTOR
+     * @param userRepository
+     */
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -24,7 +30,7 @@ public class UserService {
     /**
      * Get a user by id
      * @param id : id searched
-     * @return : user found
+     * @return : user found or null
      */
     public User findById(Long id) {
         return this.userRepository.findById(id).orElseGet(null);
@@ -101,6 +107,7 @@ public class UserService {
             // TODO : exception
             return null;
         }
-        return userRepository.save(user);
+        User newUser = this.userRepository.save(user);
+        return newUser;
     }
 }
