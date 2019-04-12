@@ -56,10 +56,16 @@ public class CompanyController {
      * @return : ResponseEntity : status OK and found company in the body
      */
     @GetMapping("/companies/name/{companyName}")
-    public ResponseEntity<Company> getSchoolByName(@PathVariable String companyName) {
+    public ResponseEntity<Company> getByName(@PathVariable String companyName) {
         return ResponseEntity.ok().body(companyService.getByName(companyName));
     }
 
+
+    /**
+     * Create a company
+     * @param company : company to create
+     * @return : created company
+     */
     @PostMapping("/companies")
     public Company createCompany(@RequestBody Company company) {
         return companyService.create(company);

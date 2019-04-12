@@ -4,7 +4,6 @@ import com.epitech.linkedinspringbootneo4jv1.model.Company;
 import com.epitech.linkedinspringbootneo4jv1.repository.CompanyRepository;
 import org.springframework.stereotype.Service;
 
-import java.net.URI;
 import java.util.Collection;
 
 /**
@@ -54,7 +53,22 @@ public class CompanyService {
         return companyRepository.getByName(companyName);
     }
 
+    /**
+     * Create a company
+     * @param company : company to create
+     * @return : created company
+     */
     public Company create(Company company) {
-        return companyRepository.createCompany(company, company.getCity().getName());
+        // TODO check if city exists
+        return companyRepository.createCompany(company.getName(), company.getCity().getName());
+    }
+
+    public boolean companyExists(String companyName) {
+        Collection<Company> allCompanies = this.getAll();
+        Company companyFound = allCompanies.stream()
+                .filter(company -> company.getName().equalsIgnoreCase(companyName))
+                .findAny()
+                .orElse(null);
+        return companyFound != null;
     }
 }

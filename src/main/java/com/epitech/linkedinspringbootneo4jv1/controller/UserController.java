@@ -1,10 +1,13 @@
 package com.epitech.linkedinspringbootneo4jv1.controller;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.model.Post;
+import com.epitech.linkedinspringbootneo4jv1.service.CityService;
 import com.epitech.linkedinspringbootneo4jv1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -71,6 +74,36 @@ public class UserController {
     @GetMapping("/users/{id}/experiences")
     public Collection<Experience> getUserExperiences(@PathVariable Long id) {
         return userService.getAllUserExperiences(id);
+    }
+
+    /**
+     * Get students by school
+     * @param schoolName : name of the school
+     * @return : ResponseEntity : status OK and students who study in that school in the body
+     */
+    @GetMapping("/users/school/students/{schoolName}")
+    public ResponseEntity<Collection<User>> getStudentsBySchool(@PathVariable String schoolName) {
+        return ResponseEntity.ok().body(userService.getStudentsBySchoolName(schoolName));
+    }
+
+    /**
+     * Get employees by school
+     * @param schoolName : name of the school
+     * @return : ResponseEntity : status OK and users who work in that school in the body
+     */
+    @GetMapping("/users/school/employees/{schoolName}")
+    public ResponseEntity<Collection<User>> getEmployeesBySchool(@PathVariable String schoolName) {
+        return ResponseEntity.ok().body(userService.getEmployeesBySchoolName(schoolName));
+    }
+
+    /**
+     * Get users by company
+     * @param companyName : name of the company
+     * @return : ResponseEntity : status OK and users who work in that company in the body
+     */
+    @GetMapping("users/company/{companyName}")
+    public ResponseEntity<Collection<User>> getUsersByCompany(@PathVariable String companyName) {
+        return ResponseEntity.ok().body(userService.getUsersByCompanyName(companyName));
     }
 
     /**

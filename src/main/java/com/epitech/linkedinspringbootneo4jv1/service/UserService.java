@@ -1,8 +1,10 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
+import com.epitech.linkedinspringbootneo4jv1.model.City;
 import com.epitech.linkedinspringbootneo4jv1.model.Experience;
 import com.epitech.linkedinspringbootneo4jv1.model.User;
 import com.epitech.linkedinspringbootneo4jv1.model.Post;
+import com.epitech.linkedinspringbootneo4jv1.repository.CityRepository;
 import com.epitech.linkedinspringbootneo4jv1.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,10 @@ public class UserService {
     /** Repository for User class */
     private UserRepository userRepository;
 
+    /**
+     * CONSTRUCTOR
+     * @param userRepository
+     */
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -25,7 +31,7 @@ public class UserService {
     /**
      * Get a user by id
      * @param id : id searched
-     * @return : user found
+     * @return : user found or null
      */
     public User findById(Long id) {
         return this.userRepository.findById(id).orElseGet(null);
@@ -72,6 +78,36 @@ public class UserService {
     }
 
     /**
+     * Get students by school
+     * @param schoolName : name of the school
+     * @return : students who study in that school
+     */
+    public Collection<User> getStudentsBySchoolName(String schoolName) {
+        // TODO check if school exists
+        return userRepository.getStudentsBySchoolName(schoolName);
+    }
+
+    /**
+     * Get users by company
+     * @param companyName : name of the company
+     * @return : users who work in that company
+     */
+    public Collection<User> getUsersByCompanyName(String companyName) {
+        // TODO check if company exists
+        return userRepository.getUsersByCompanyName(companyName);
+    }
+
+    /**
+     * Get employees by school
+     * @param schoolName : name of the school
+     * @return : users who work in that school
+     */
+    public Collection<User> getEmployeesBySchoolName(String schoolName) {
+        // TODO check if school exists
+        return userRepository.getEmployeesBySchoolName(schoolName);
+    }
+
+    /**
      * Create a user
      * @param user : user to create
      * @return user created
@@ -82,6 +118,7 @@ public class UserService {
             // TODO : exception
             return null;
         }
-        return userRepository.save(user);
+        User newUser = this.userRepository.save(user);
+        return newUser;
     }
 }
