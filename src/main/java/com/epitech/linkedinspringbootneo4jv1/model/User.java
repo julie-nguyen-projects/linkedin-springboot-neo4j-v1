@@ -35,6 +35,10 @@ public class User {
     @Relationship(type = "HAS_EXPERIENCES")
     private List<Experience> experiences;
 
+    /** User's posts */
+    @Relationship(type = "HAS_POSTS")
+    private List<Post> posts;
+
     /**
      * CONSTRUCTOR
      */
@@ -92,4 +96,14 @@ public class User {
         city = _city;
         experiences = _experiences;
     }
+
+    public User (Long _id, String _lastname, String _name, City _city, List<Experience> _experiences, List<Post> _posts) {
+        id = _id;
+        lastname = _lastname;
+        name = _name;
+        city = _city;
+        experiences = _experiences;
+        posts = _posts;
+    }
+
 }

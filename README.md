@@ -49,6 +49,20 @@ CREATE (EntrepriseUne:Company{name: 'EntrepriseUne'})
 CREATE (EntrepriseUne)-[:IS_LOCATED_IN]->(lyon)
 ```
 
+// Lien entre un post et l'utilisateur
+```
+MATCH (user {name: "Julie"})
+CREATE (Post:Post{content: 'post de julie'})
+CREATE (user)-[:HAS_POSTS]->(Post)
+```
+
+// Lien entre un commentaire et un post
+```
+MATCH (post)WHERE ID(post) = {idPost}
+CREATE (comment : Comment {content:'contenu de mon commentaire'})
+CREATE (post)-[:HAS_COMMENTS]->(comment)
+```
+
 # Lancer l'application java
 L'interface et la première requête de récupérations des utilisateurs est disponible sous : 
 http://localhost:8081/users
