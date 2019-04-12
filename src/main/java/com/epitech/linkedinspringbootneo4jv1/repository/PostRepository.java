@@ -4,14 +4,13 @@ import com.epitech.linkedinspringbootneo4jv1.model.Comment;
 import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import org.springframework.data.neo4j.annotation.Query;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
-
 import java.util.Collection;
 
 public interface PostRepository extends Neo4jRepository<Post, Long> {
 
     /**
      * Get all post
-     * @return list of companies
+     * @return list of post
      */
     @Query("MATCH (c:Post) MATCH p=(c)-[r*0..2]-() RETURN c, nodes(p), rels(p)")
     Collection<Post> getAllPost();
@@ -24,28 +23,29 @@ public interface PostRepository extends Neo4jRepository<Post, Long> {
     @Query("MATCH (s:Post) WHERE ID(s)={id} RETURN s")
     Post getPostById(Long id);
 
-
     /**
-     * Get post by id
+     * Get a list of comment by a post id
      * @param id : id of the searched post
-     * @return comments found
+     * @return list of comments found
      */
     @Query("MATCH (e:Comment)<-[he:HAS_COMMENTS]-(u:Post) " +
             "WHERE ID(u)={id} " +
             "RETURN e,he,u")
     Collection<Comment> getPostComments(Long id);
 
-
+    /**
+     * Create a post
+     * @param content : Content of post
+     * @return : created post
+     */
     @Query("MATCH (city {name: {cityName}})" +
             "CREATE (post:Post {content: {content}}) " +
            " RETURN post")
     Post createPost(String content);
 
     /**
-     * Create a Comment
-     * @param content : Content of Comment
-     * @return : created Comment
+     * Delete a post
+     * @param id : id of the post
      */
-    @Query("CREATE (comment:Comment {content: {content}})")
-    Comment createComment(String content);
+    void deleteById(Long id);
 }

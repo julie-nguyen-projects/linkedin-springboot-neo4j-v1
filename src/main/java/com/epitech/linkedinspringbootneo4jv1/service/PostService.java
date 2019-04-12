@@ -12,7 +12,7 @@ import java.util.Collection;
  */
 @Service
 public class PostService {
-
+    /** Repository for post class */
     private PostRepository postRepository;
 
     public PostService(PostRepository postRepository) {
@@ -29,7 +29,7 @@ public class PostService {
 
     /**
      * Get Post by id
-     * @param id : id of the searched Post
+     * @param id : id of the searched post
      * @return post found
      */
     public Post getById(Long id) {
@@ -38,9 +38,9 @@ public class PostService {
 
 
     /**
-     * Get comments by postId
+     * Get comments by post
      * @param id : id of the searched Post
-     * @return post found
+     * @return list of the comment(s) found
      */
     public Collection<Comment> getPostComments(Long id) {
         return postRepository.getPostComments(id);
@@ -50,6 +50,31 @@ public class PostService {
 
     public Post create(String content) {
         return postRepository.createPost(content);
+    }
+
+
+    /**
+     * Update an existed post with a given id.
+     * The function add a new post if it doesn't exist.
+     * @param postId
+     * @param post
+     * @return
+     */
+    public Post updatePost(Long postId, Post post) {
+        Post existingPost = this.getById(postId);
+        if (existingPost != null) {
+            existingPost.setContent(post.getContent());
+            this.postRepository.save(existingPost);
+        }
+        return this.postRepository.save(existingPost);
+    }
+
+    /**
+     * Delete a post with the given id
+     * @param id the id of the post
+     */
+    public void deletePost(Long id) {
+        this.postRepository.deleteById(id);
     }
 
 }

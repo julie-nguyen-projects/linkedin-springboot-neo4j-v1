@@ -50,9 +50,9 @@ public class UserService {
 
 
     /**
-     * Get post by user
-     * @param UserId : if of the user
-     * @return : Post from user
+     * Get all post by user
+     * @param UserId : id of the user
+     * @return : list of post
      */
     public Collection<Post> getAllUserPost(long UserId) {
         return userRepository.getAllUserPost(UserId);

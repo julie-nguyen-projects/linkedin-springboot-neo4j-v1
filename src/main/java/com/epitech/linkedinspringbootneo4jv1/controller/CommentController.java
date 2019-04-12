@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/")
 public class CommentController {
 
-    /** Service for Company class */
+    /** Service for Comment class */
     private final CommentService commentService;
 
     @Autowired
@@ -23,7 +23,7 @@ public class CommentController {
 
     /**
      * Get Comment by id
-     * @param id : id of the searched post
+     * @param id : id of the searched comment
      * @return comment found
      */
     @GetMapping("/comments/id/{id}")
@@ -31,6 +31,11 @@ public class CommentController {
         return ResponseEntity.ok().body(commentService.getById(id));
     }
 
+    /**
+     * Create a comment
+     * @param content : comment to create
+     * @return comment created
+     */
     @PostMapping("/comments")
     public Comment createComment(@RequestBody String content) {
         return commentService.create(content);

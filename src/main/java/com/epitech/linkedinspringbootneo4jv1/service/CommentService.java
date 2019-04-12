@@ -1,18 +1,16 @@
 package com.epitech.linkedinspringbootneo4jv1.service;
 
 import com.epitech.linkedinspringbootneo4jv1.model.Comment;
-import com.epitech.linkedinspringbootneo4jv1.model.Post;
 import com.epitech.linkedinspringbootneo4jv1.repository.CommentRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-
 /**
- * Service for Post class
+ * Service for Comment class
  */
 @Service
 public class CommentService {
 
+    /** Repository for comment class */
     private CommentRepository commentRepository;
 
     public CommentService(CommentRepository commentRepository) {
@@ -20,14 +18,19 @@ public class CommentService {
     }
 
     /**
-     * Get all Post
-     * @return list of companies
+     * Get comment by id
+     * @param id : id of the searched comment
+     * @return comment found
      */
     public Comment getById(Long id) {
         return commentRepository.getCommentByID(id);
     }
 
-
+    /**
+     * Create a comment
+     * @param content : content of the comment
+     * @return comment created
+     */
     public Comment create(String content) {
         return commentRepository.createComment(content);
     }

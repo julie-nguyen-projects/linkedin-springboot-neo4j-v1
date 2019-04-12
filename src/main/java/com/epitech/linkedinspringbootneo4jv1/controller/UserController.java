@@ -52,11 +52,10 @@ public class UserController {
         return userService.getAllByCity(cityName);
     }
 
-
     /**
-     * Get posts by userid
-     * @param userId : userid
-     * @return : users post
+     * Get posts by user
+     * @param userId : id of the post
+     * @return : post of the user
      */
     @GetMapping("/users/{userId}/posts")
     public Collection<Post> getAllUserPost(@PathVariable Long userId) {

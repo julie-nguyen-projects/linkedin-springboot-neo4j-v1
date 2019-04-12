@@ -24,21 +24,14 @@ public interface UserRepository extends Neo4jRepository<User, Long> {
     Optional<User> findById(@Param("id") Long id);
 
     /**
-     * Get all study experiences linked to a user
-     * @param id : id of the user
-     * @return : experiences of the user
+     * Get all post linked to a user
+     * @param id : id of the post
+     * @return : list of user's post
      */
-
-//    @Query("MATCH (e:Post)<-[he:HAS_POSTS]-(u:User) " +
-//            "WHERE ID(u)={id} " +
-//            "RETURN e,he,u")
-//
-
     @Query("MATCH (e:Post)<-[he:HAS_POSTS]-(u:User) " +
             "WHERE ID(u)={id} " +
             "RETURN e,he,u")
     Collection<Post> getAllUserPost(@Param("id")Long id);
-
 
     /**
      * Get all users even those without relationships

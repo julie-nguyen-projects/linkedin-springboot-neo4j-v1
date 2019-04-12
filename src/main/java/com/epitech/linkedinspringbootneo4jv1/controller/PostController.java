@@ -6,7 +6,6 @@ import com.epitech.linkedinspringbootneo4jv1.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.Collection;
 
 /**
@@ -26,8 +25,8 @@ public class PostController {
 
     /**
      * Get all comment linked to a post
-     * @param id : id of the user
-     * @return : comment of the post
+     * @param id : the id of the post we are looking for comments
+     * @return :  status OK and list of Comment for a Post in the body
      */
     @GetMapping("/posts/{id}/comments")
     public Collection<Comment> getPostComments(@PathVariable Long id) {
@@ -44,9 +43,28 @@ public class PostController {
         return ResponseEntity.ok().body(postService.getById(id));
     }
 
-
+    /**
+     * Create a Post
+     * @param content : post to create
+     * @return post created
+     */
     @PostMapping("/posts")
     public Post createPost(@RequestBody String content) {
         return postService.create(content);
     }
+
+    /**
+     * Update a Post
+     * @param id : id of the post
+     * @return post update
+     */
+    @PutMapping("/posts/id/{id}")
+    public Post updatePost(@PathVariable("id") Long id, @RequestBody Post post) { return this.postService.updatePost(id, post); }
+
+    /**
+     * Delete a Post
+     * @param id : id of the post
+     */
+    @DeleteMapping("/posts/id/{id}")
+    public void deletePost(@PathVariable("id") Long id) { this.postService.deletePost(id); }
 }
